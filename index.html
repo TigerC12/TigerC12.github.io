@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiger Chen</title>
+  <meta name="description" content="Tiger Chen. Mechanical engineering student at Stanford (class of 2030). Drones, robotics, custom PCBs, and a filament recycler. Looking for a summer 2027 internship.">
+  <meta property="og:title" content="Tiger Chen">
+  <meta property="og:description" content="Mechanical engineering student at Stanford. Looking for a summer 2027 internship.">
+  <meta property="og:image" content="img/aircart-drone.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b7410e'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-brand" href="#top">Tiger Chen</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-small" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume</a>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <p class="eyebrow mono">Stanford University · B.S. Mechanical Engineering, minor in Computer Science · Class of 2030</p>
+    <h1>Tiger Chen</h1>
+    <p class="lede">
+      I'm a mechanical engineering student at Stanford. Before college I co-founded a drone delivery startup and led
+      its hardware, built mechanical and electrical subsystems for a FIRST Robotics competition robot, designed a
+      filament recycler that holds ±0.05 mm, and designed and laid out a custom ESP32 sensor board from scratch.
+      This past summer I built the force-feedback glove for a teleoperated robotic hand. I'm looking for a
+      <strong>summer 2027 internship</strong> in mechanical design, robotics, or hardware.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">Projects</a>
+      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn" href="mailto:tigerc@stanford.edu">Email</a>
+      <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <h2>Projects</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card card-featured">
+        <div class="card-body">
+          <div class="card-top">
+            <span class="tag">Drones · Startup</span>
+            <span class="mono muted">2025 – 2026</span>
+          </div>
+          <h3>AirCart</h3>
+          <p class="role">Co-founder, hardware lead</p>
+          <p>
+            AirCart is a startup I co-founded with three classmates to prototype autonomous drone delivery for food
+            and goods. I led the hardware. I designed the heavy-lift airframe and payload bay, integrated the
+            flight electronics and power system, and tuned the PID control loops that govern flight. We took the
+            vehicle from first schematic to a flying prototype in two months, then validated it over more than 20
+            test flights, revising the structure and control gains between rounds until it carried a 5 kg payload
+            reliably. I also ran early prototyping and manufacturing and researched how existing couriers operate
+            to shape the delivery use case.
+          </p>
+          <ul class="stats">
+            <li><b>5 kg</b><span>payload</span></li>
+            <li><b>20+</b><span>test flights</span></li>
+            <li><b>2 mo</b><span>schematic to flight</span></li>
+          </ul>
+        </div>
+        <figure>
+          <img class="card-img" src="img/aircart-drone.png" alt="CAD model of the AirCart quadcopter with a boxed payload bay slung under the center of the frame" loading="lazy">
+          <figcaption>Quadcopter CAD with the under-slung payload bay.</figcaption>
+        </figure>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Robotics · Mechanical</span>
+          <span class="mono muted">Summer 2026</span>
+        </div>
+        <h3>Teleoperated robotic hand</h3>
+        <p class="role">Glove lead</p>
+        <p>
+          A group project to build a robotic hand driven by an operator wearing a
+          <a href="https://tea-lab.github.io/DOGlove/index.html" target="_blank" rel="noopener">DOGlove</a>, the
+          open-source haptic force-feedback glove from the TEA Lab. I was responsible for the glove. The work was
+          mostly mechanical: printing and fitting the 21-DoF joint linkage, assembling the cable-driven
+          force-feedback transmission, and tuning the fit so the glove tracked cleanly through a full range of finger
+          motion. On the electrical side I populated the board, flashed the firmware, and verified the glove was
+          reporting finger positions to the hand. The rest of the team built the hand.
+        </p>
+        <ul class="stats">
+          <li><b>21</b><span>DoF hand tracking</span></li>
+          <li><b>5</b><span>fingers with force feedback</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Mechanical</span>
+          <span class="mono muted">2025</span>
+        </div>
+        <h3>3D filament recycler</h3>
+        <figure>
+          <img class="card-img fit" src="img/filament-recycler.png" alt="CAD assembly of the filament recycler: aluminum extrusion frame, blue hopper feeding a shredder, extruder, and spooling drum" loading="lazy">
+          <figcaption>Full assembly: hopper, shredder, extruder, and spooler on an aluminum extrusion frame.</figcaption>
+        </figure>
+        <p>
+          A closed-loop machine that shreds failed PLA prints and extrudes them back into 1.75 mm filament. Over eight
+          months a small team and I designed the shredder, extruder, and spooling stages, then iterated the nozzle
+          geometry, spooling arm, and feed mechanism through five design revisions to hold diameter within ±0.05 mm,
+          tight enough to print with. The finished machine went to our school's robotics team, which had been paying
+          for filament out of a small budget.
+        </p>
+        <ul class="stats">
+          <li><b>±0.05 mm</b><span>diameter</span></li>
+          <li><b>5</b><span>revisions</span></li>
+          <li><b>8 mo</b><span>build</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">PCB · Embedded</span>
+          <span class="mono muted">2025</span>
+        </div>
+        <h3>Badminton racket accelerometer</h3>
+        <div class="card-media">
+          <figure>
+            <img class="card-img" src="img/racket-pcb-schematic.png" alt="KiCad schematic: ESP32-WROOM-32E, MPU-6050 IMU, CH340C USB-serial bridge, USB-C receptacle, TP4056 LiPo charger, and AMS1117 3.3 V regulator" loading="lazy">
+            <figcaption>Schematic. ESP32-WROOM-32E, MPU-6050 over I²C, CH340C USB-serial, TP4056 charger, 3.3 V LDO.</figcaption>
+          </figure>
+          <figure>
+            <img class="card-img" src="img/racket-pcb-layout.png" alt="KiCad PCB layout with antenna keep-out zone, ESP32 module, USB-C connector, and a LiPo battery footprint with four mounting holes" loading="lazy">
+            <figcaption>Layout. Antenna keep-out, USB-C at the board edge, battery footprint, four mounting holes.</figcaption>
+          </figure>
+        </div>
+        <p>
+          A custom data-acquisition board that mounts to a badminton racket and records 3-axis swing acceleration and
+          impact force at 1000 Hz. I designed it independently in KiCad: an ESP32-WROOM-32E reading an MPU-6050 IMU
+          over I²C, USB-C with a CH340C bridge for programming and data offload, ESD protection on the data lines, and
+          a TP4056 LiPo charger feeding a 3.3 V regulator so it runs untethered. The layout keeps the antenna clear
+          with a keep-out zone and puts the battery footprint under the board to stay compact on the handle. I taught
+          myself the circuit design and layout for this from component datasheets, designed a printed case to mount it
+          to the racket, and used the data to analyze my own strokes.
+        </p>
+        <ul class="stats">
+          <li><b>1000 Hz</b><span>sample rate</span></li>
+          <li><b>3-axis</b><span>accel + impact</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Robotics</span>
+          <span class="mono muted">2024 – 2026</span>
+        </div>
+        <h3>FIRST Robotics competition robot</h3>
+        <p class="role">Board member, electrical and mechanical team</p>
+        <p>
+          I worked on both sides of a 100+ lb competition robot with a 20-person team. Mechanically, I designed and
+          assembled drivetrain, actuator, and structural subsystems. Electrically, I architected the power
+          distribution for the motor controllers and sensor array and wired the robot. After wiring faults cost us
+          matches one season, I introduced structured cable management and a pre-match diagnostic routine that
+          eliminated them.
+        </p>
+        <ul class="stats">
+          <li><b>100+ lb</b><span>robot</span></li>
+          <li><b>20</b><span>person team</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Power</span>
+          <span class="mono muted">2024</span>
+        </div>
+        <h3>Solar-powered battery bank</h3>
+        <p>
+          A portable battery bank charged from photovoltaic panels. I sized the cells, selected the charge controller
+          and battery management system, and benchmarked different panel and battery configurations against each
+          other to understand where the efficiency trade-offs actually fall. It's the project that got me interested
+          in power electronics.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <h2>Experience</h2>
+    </div>
+
+    <ol class="timeline">
+      <li>
+        <div class="tl-when mono">2025 – 2026</div>
+        <div class="tl-body">
+          <h3>Co-founder, drone engineering lead</h3>
+          <p class="role">AirCart · Brea, CA</p>
+          <ul>
+            <li>Engineered a heavy-lift UAV with a 5 kg payload capacity and validated it over 20+ test flights, with structural and control revisions between rounds.</li>
+            <li>Led hardware development across structural integration, PID tuning, and flight testing, taking a four-person team from concept to flight in two months.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when mono">2024 – 2026</div>
+        <div class="tl-body">
+          <h3>Board member, electrical and mechanical team</h3>
+          <p class="role">FIRST Robotics · Fullerton, CA</p>
+          <ul>
+            <li>Designed and assembled drivetrain, actuator, and structural subsystems on a 100+ lb competition robot with a 20-person team.</li>
+            <li>Architected power distribution for the motor controllers and sensor array; eliminated wiring faults with structured cable management and pre-match diagnostics.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when mono">Jun – Jul 2025</div>
+        <div class="tl-body">
+          <h3>Engineering intern</h3>
+          <p class="role">Atlas Assembly / Glenair · Arcadia, CA</p>
+          <ul>
+            <li>Designed precision assembly tooling in SOLIDWORKS and 3D-printed prototypes that improved assembly efficiency and technician access, including a layout study of tool clearances for my mentor.</li>
+            <li>Fabricated wire connector and fiber optic cable assemblies by crimping and termination to aerospace production standards.</li>
+            <li>Presented the finished tooling to Glenair engineers at the end of the internship.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-group">
+        <h3>CAD and design</h3>
+        <ul class="chips">
+          <li>SOLIDWORKS (CSWA certified)</li><li>Fusion 360</li><li>Onshape</li><li>parametric modeling</li><li>tolerance analysis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Fabrication</h3>
+        <ul class="chips">
+          <li>3D printing</li><li>prototype testing</li><li>precision assembly</li><li>crimping</li><li>fiber optic cable assembly</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Electrical and PCB</h3>
+        <ul class="chips">
+          <li>KiCad</li><li>schematic design</li><li>PCB layout</li><li>power distribution</li><li>ESP32</li><li>IMU and sensors</li><li>motor controllers</li><li>soldering</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Embedded and software</h3>
+        <ul class="chips">
+          <li>firmware integration</li><li>PID tuning</li><li>sensor fusion</li><li>data acquisition</li><li>Python</li><li>C++</li><li>Java</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about">
+      <div class="about-text">
+        <p>
+          I'm from Walnut, California, and went to Troy High School in the Tech Magnet program. I'm a first-generation
+          college student. At Stanford I'm doing a B.S. in mechanical engineering with a minor in computer science.
+        </p>
+        <p>
+          I've played badminton competitively since I was seven. I've represented the U.S. in BWF tournaments as a
+          Yonex-sponsored junior, trained at Global Badminton Academy under Tony Gunawan (Olympic gold, 2000), and won
+          U19 men's doubles at the 2025 Pan Am Junior Championships in Guatemala. The racket accelerometer project came
+          out of wanting to see my own swing data.
+        </p>
+        <p>
+          In high school I also ran the Engineering to the Future club, where I gave biweekly talks introducing
+          members to different engineering fields, helped organize the Crack the Code hackathon (2000+ students across
+          Southern California over three years), and took the Stanford Pre-Collegiate neuroengineering course, where
+          my group presented on brain-computer interfaces. Outside of that I've put in 700+ volunteer hours with Care
+          Mission USA, mostly food drives and meal prep, and coached free badminton clinics through Badminton Beyond
+          Borders.
+        </p>
+      </div>
+      <dl class="facts">
+        <div><dt>Education</dt><dd>Stanford University, B.S. Mechanical Engineering, minor in Computer Science, expected 2030</dd></div>
+        <div><dt>Certification</dt><dd>Certified SOLIDWORKS Associate (CSWA), May 2026</dd></div>
+        <div><dt>Badminton</dt><dd>Team USA · 2025 Pan Am Junior Champion, U19 doubles · Yonex-sponsored</dd></div>
+        <div><dt>Academic</dt><dd>National Merit Commended Scholar · AP Scholar with Distinction · Troy Tech GPA 4.84</dd></div>
+        <div><dt>Other</dt><dd>3× Gold Presidential Volunteer Service Award · College Board First-Generation Recognition</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section contact">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p class="section-sub">Email is the best way to reach me.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:tigerc@stanford.edu">tigerc@stanford.edu</a>
+      <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">github.com/TigerC12</a>
+      <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">linkedin.com/in/youshitigerchen</a>
+      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+    <p class="muted small contact-note">
+      Available for summer 2027 internships. U.S. citizen, no sponsorship needed. Based in the LA area when not at Stanford.
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer mono muted">
+  <span>Youshi (Tiger) Chen, 2026</span>
+</footer>
+
+</body>
+</html>
