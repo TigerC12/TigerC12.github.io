@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tiger Chen</title>
-  <meta name="description" content="Tiger Chen. Mechanical engineering student at Stanford (class of 2030). Drones, robotics, custom PCBs, and a filament recycler. Looking for a summer 2027 internship.">
+  <meta name="description" content="Tiger Chen. Math and computer science student at Stanford (class of 2030). Quantitative trading research, drones, robotics, and custom PCBs. Looking for a summer 2027 internship.">
   <meta property="og:title" content="Tiger Chen">
-  <meta property="og:description" content="Mechanical engineering student at Stanford. Looking for a summer 2027 internship.">
+  <meta property="og:description" content="Math and computer science student at Stanford. Quant research and hardware. Looking for a summer 2027 internship.">
   <meta property="og:image" content="img/aircart-drone.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b7410e'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,25 +25,26 @@
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="btn btn-small" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume</a>
+  <a class="btn btn-small" href="resume/Resume_Youshi_Tiger_Chen.pdf" target="_blank" rel="noopener">Resume</a>
 </header>
 
 <main id="top">
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <p class="eyebrow mono">Stanford University · B.S. Mechanical Engineering, minor in Computer Science · Class of 2030</p>
+    <p class="eyebrow mono">Stanford University · B.S. Mathematics and Computer Science · Class of 2030</p>
     <h1>Tiger Chen</h1>
     <p class="lede">
-      I'm a mechanical engineering student at Stanford. Before college I co-founded a drone delivery startup and led
-      its hardware, built mechanical and electrical subsystems for a FIRST Robotics competition robot, designed a
-      filament recycler that holds ±0.05 mm, and designed and laid out a custom ESP32 sensor board from scratch.
-      This past summer I built the force-feedback glove for a teleoperated robotic hand. I'm looking for a
-      <strong>summer 2027 internship</strong> in mechanical design, robotics, or hardware.
+      I'm a math and computer science student at Stanford with an engineer's background. Before college I co-founded a
+      drone delivery startup and led its hardware, built subsystems for a FIRST Robotics competition robot, and
+      designed a custom ESP32 sensor board from scratch. Now I apply the same rigor to markets: I build tools to
+      study options dealer positioning, backtest strategies on real quotes, and audit my own results until they
+      either hold up or die. I'm looking for a <strong>summer 2027 internship</strong> in quantitative trading or
+      research.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#projects">Projects</a>
-      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       <a class="btn" href="mailto:tigerc@stanford.edu">Email</a>
       <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">LinkedIn</a>
@@ -57,6 +58,42 @@
     </div>
 
     <div class="grid">
+
+      <article class="card card-featured">
+        <div class="card-body">
+          <div class="card-top">
+            <span class="tag">Quant research · Python</span>
+            <span class="mono muted">2026 – present</span>
+          </div>
+          <h3>Options dealer positioning and 0DTE strategy research</h3>
+          <p class="role">Independent research</p>
+          <p>
+            I wanted to know whether the engineering habit of distrusting any result you can't reproduce would
+            survive contact with markets. I built a Python tool that computes dealer gamma (GEX), vanna, and charm
+            exposure, zero-gamma flip levels, and call/put walls from option open interest using Black-Scholes
+            Greeks, with strike-by-time heatmap dashboards and alerts running on a cloud VM. Then I backtested
+            GEX-gated 0DTE SPY breakout strategies over 268 trading days on real NBBO option quotes against
+            matched-null controls.
+          </p>
+        </div>
+        <div class="card-body">
+          <p>
+            The most useful thing I found was my own mistakes. Twice a strategy looked profitable until an audit
+            turned up lookahead bias: a confirmation signal that peeked four minutes ahead, and an exit-fill
+            convention that priced stops before they were knowable. Fixed, a 63% win rate became 36% and +1.7% per
+            trade became −5.5%, and live paper-trading fills agreed with the corrected numbers. After that I built a
+            four-stage validator (deflated Sharpe, cross-instrument replication, embargoed walk-forward, sealed
+            holdout). It has rejected all 202 hypotheses I've tested, including a SPY mean-reversion study against a
+            rolling-OLS cross-market fair value. I count the clean negative results as the output.
+          </p>
+          <ul class="stats">
+            <li><b>202</b><span>hypotheses tested, 0 survivors</span></li>
+            <li><b>2</b><span>lookahead bugs caught in self-audit</span></li>
+            <li><b>268</b><span>trading days backtested</span></li>
+          </ul>
+        </div>
+      </article>
+
 
       <article class="card card-featured">
         <div class="card-body">
@@ -85,6 +122,25 @@
           <img class="card-img" src="img/aircart-drone.png" alt="CAD model of the AirCart quadcopter with a boxed payload bay slung under the center of the frame" loading="lazy">
           <figcaption>Quadcopter CAD with the under-slung payload bay.</figcaption>
         </figure>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Quant · Pine Script</span>
+          <span class="mono muted">2026</span>
+        </div>
+        <h3>Intraday volume-anomaly signal</h3>
+        <p>
+          A 1-minute SPY/QQQ indicator that flags six Wyckoff volume patterns by scoring each bar's volume, range,
+          and wicks against trailing baselines (ratio or z-score). It is leak-free by construction: every reference
+          statistic is lagged one bar, signals confirm only at bar close, and the documented fill rule is the next
+          bar's open. Along the way I found and fixed a session-gap artifact where pre-market volume made the signal
+          fire almost every morning at the open.
+        </p>
+        <ul class="stats">
+          <li><b>6</b><span>patterns</span></li>
+          <li><b>0</b><span>lookahead</span></li>
+        </ul>
       </article>
 
       <article class="card">
@@ -252,6 +308,12 @@
     </div>
     <div class="skills">
       <div class="skill-group">
+        <h3>Quantitative research</h3>
+        <ul class="chips">
+          <li>Python (pandas, NumPy)</li><li>backtesting</li><li>lookahead-bias control</li><li>walk-forward validation</li><li>deflated Sharpe</li><li>options Greeks</li><li>Black-Scholes</li><li>time-series analysis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
         <h3>CAD and design</h3>
         <ul class="chips">
           <li>SOLIDWORKS (CSWA certified)</li><li>Fusion 360</li><li>Onshape</li><li>parametric modeling</li><li>tolerance analysis</li>
@@ -287,7 +349,9 @@
       <div class="about-text">
         <p>
           I'm from Walnut, California, and went to Troy High School in the Tech Magnet program. I'm a first-generation
-          college student. At Stanford I'm doing a B.S. in mechanical engineering with a minor in computer science.
+          college student. At Stanford I'm studying mathematics and computer science. I came to markets through
+          engineering: tuning flight controllers and chasing wiring faults taught me to distrust results I can't
+          reproduce, and quantitative trading research turned out to reward exactly that habit.
         </p>
         <p>
           I've played badminton competitively since I was seven. I've represented the U.S. in BWF tournaments as a
@@ -305,7 +369,7 @@
         </p>
       </div>
       <dl class="facts">
-        <div><dt>Education</dt><dd>Stanford University, B.S. Mechanical Engineering, minor in Computer Science, expected 2030</dd></div>
+        <div><dt>Education</dt><dd>Stanford University, B.S. Mathematics and Computer Science, expected 2030</dd></div>
         <div><dt>Certification</dt><dd>Certified SOLIDWORKS Associate (CSWA), May 2026</dd></div>
         <div><dt>Badminton</dt><dd>Team USA · 2025 Pan Am Junior Champion, U19 doubles · Yonex-sponsored</dd></div>
         <div><dt>Academic</dt><dd>National Merit Commended Scholar · AP Scholar with Distinction · Troy Tech GPA 4.84</dd></div>
@@ -324,7 +388,7 @@
       <a class="btn btn-primary" href="mailto:tigerc@stanford.edu">tigerc@stanford.edu</a>
       <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">github.com/TigerC12</a>
       <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">linkedin.com/in/youshitigerchen</a>
-      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn" href="resume/Resume_Youshi_Tiger_Chen.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
     </div>
     <p class="muted small contact-note">
       Available for summer 2027 internships. U.S. citizen, no sponsorship needed. Based in the LA area when not at Stanford.
