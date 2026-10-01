@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiger Chen</title>
+  <meta name="description" content="Tiger Chen. Mechanical engineering student at Stanford (class of 2030). Quantitative trading research, drones, robotics, and custom PCBs. Looking for a summer 2027 internship.">
+  <meta property="og:title" content="Tiger Chen">
+  <meta property="og:description" content="Mechanical engineering student at Stanford. Quant research and hardware. Looking for a summer 2027 internship.">
+  <meta property="og:image" content="https://tigerc12.github.io/img/aircart-drone.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b7410e'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+/* ---------- tokens ---------- */
+:root {
+  --bg: #faf9f6;
+  --bg-elev: #ffffff;
+  --fg: #1a1917;
+  --fg-muted: #6b6864;
+  --line: #e6e2dc;
+  --accent: #b7410e;
+  --accent-soft: #fbe9df;
+  --chip: #f1eee9;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px -12px rgba(0,0,0,.12);
+  --radius: 14px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131211;
+    --bg-elev: #1c1b19;
+    --fg: #ecebe8;
+    --fg-muted: #9c9891;
+    --line: #2c2a27;
+    --accent: #f0864a;
+    --accent-soft: #3a2113;
+    --chip: #262421;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+h1, h2, h3 { line-height: 1.15; margin: 0; letter-spacing: -0.015em; }
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; }
+h2 { font-size: 1.75rem; font-weight: 700; }
+h3 { font-size: 1.125rem; font-weight: 600; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+.mono { font-family: var(--mono); font-size: .8125rem; }
+.muted { color: var(--fg-muted); }
+.small { font-size: .875rem; }
+.accent { color: var(--accent); }
+strong { font-weight: 600; }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 24px;
+  padding: 14px clamp(20px, 5vw, 64px);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand { font-weight: 600; font-size: 1rem; }
+.nav-links { display: flex; gap: 20px; margin-left: auto; font-size: .9375rem; }
+.nav-links a { color: var(--fg-muted); }
+.nav-links a:hover { color: var(--fg); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 16px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--bg-elev);
+  font-weight: 500; font-size: .9375rem; white-space: nowrap;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { color: #fff; filter: brightness(1.08); }
+.btn-small { padding: 7px 14px; font-size: .875rem; }
+
+/* ---------- layout ---------- */
+main { max-width: 1040px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+.section { padding: 64px 0; border-top: 1px solid var(--line); }
+.section-head { margin-bottom: 32px; }
+.section-sub { color: var(--fg-muted); margin-top: 8px; max-width: 60ch; }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(56px, 10vw, 112px) 0 64px; }
+.eyebrow { color: var(--accent); margin-bottom: 20px; }
+.lede { margin-top: 24px; font-size: 1.125rem; max-width: 62ch; color: var(--fg-muted); }
+.lede strong { color: var(--fg); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.contact-note { margin-top: 24px; max-width: 60ch; }
+
+/* ---------- project cards ---------- */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 24px; border-radius: var(--radius);
+  background: var(--bg-elev); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.card-featured { grid-column: 1 / -1; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.tag {
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .02em;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 3px 10px; border-radius: 999px;
+}
+.card h3 { font-size: 1.25rem; }
+.card p { color: var(--fg-muted); font-size: .9375rem; }
+.card .role, .tl-body .role { color: var(--fg); font-size: .9375rem; font-weight: 500; margin-top: -6px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 4px; }
+.stats li { display: flex; flex-direction: column; }
+.stats b { font-family: var(--mono); font-size: 1.375rem; font-weight: 500; color: var(--fg); line-height: 1.1; }
+.stats span { font-size: .75rem; color: var(--fg-muted); margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.chips li {
+  font-family: var(--mono); font-size: .75rem;
+  background: var(--chip); color: var(--fg-muted);
+  padding: 3px 9px; border-radius: 6px;
+}
+
+/* ---------- timeline ---------- */
+.timeline { display: flex; flex-direction: column; gap: 36px; }
+.timeline > li { display: grid; grid-template-columns: 150px 1fr; gap: 24px; }
+.tl-when { color: var(--fg-muted); padding-top: 4px; }
+.tl-body ul { list-style: disc; padding-left: 20px; margin-top: 10px; color: var(--fg-muted); font-size: .9375rem; }
+.tl-body li { margin-bottom: 4px; }
+
+/* ---------- skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+.skill-group h3 { font-size: .9375rem; margin-bottom: 10px; }
+.skill-group .chips { margin-top: 0; padding-top: 0; }
+
+/* ---------- about ---------- */
+.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+.about-text { display: flex; flex-direction: column; gap: 16px; color: var(--fg-muted); }
+.facts { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.facts dt { font-family: var(--mono); font-size: .75rem; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
+.facts dd { margin: 2px 0 0; font-size: .9375rem; }
+
+/* ---------- contact / footer ---------- */
+.contact .hero-actions { margin-top: 0; }
+.footer {
+  max-width: 1040px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 64px) 40px;
+  border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px) {
+  .nav { gap: 12px; }
+  .nav-links { display: none; }
+  .grid, .skills, .about { grid-template-columns: 1fr; }
+  .timeline > li { grid-template-columns: 1fr; gap: 6px; }
+  .section { padding: 48px 0; }
+}
+
+/* ---------- project images ---------- */
+.card-img {
+  display: block; width: 100%; height: auto;
+  border-radius: 10px; border: 1px solid var(--line);
+  background: #fff;
+}
+.card-img.fit { aspect-ratio: 4 / 3; object-fit: contain; }
+.card-media { display: grid; gap: 10px; }
+.card-featured { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px 28px; align-items: start; }
+.card-featured .card-body { display: flex; flex-direction: column; gap: 12px; }
+.card-featured .card-img { aspect-ratio: 3 / 2; object-fit: cover; }
+figcaption { font-family: var(--mono); font-size: .75rem; color: var(--fg-muted); margin-top: 6px; }
+figure { margin: 0; }
+@media (max-width: 760px) {
+  .card-featured { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-brand" href="#top">Tiger Chen</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-small" href="https://tigerc12.github.io/resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume</a>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <p class="eyebrow mono">Stanford University · B.S. Mechanical Engineering · Class of 2030</p>
+    <h1>Tiger Chen</h1>
+    <p class="lede">
+      I'm a mechanical engineering student at Stanford. Before college I co-founded a
+      drone delivery startup and led its hardware, built subsystems for a FIRST Robotics competition robot, and
+      designed a custom ESP32 sensor board from scratch. Now I apply the same rigor to markets: I build tools to
+      study options dealer positioning, backtest strategies on real quotes, and audit my own results until they
+      either hold up or die. I'm looking for a <strong>summer 2027 internship</strong> in quantitative trading or
+      research.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">Projects</a>
+      <a class="btn" href="https://tigerc12.github.io/resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn" href="mailto:tigerc@stanford.edu">Email</a>
+      <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <h2>Projects</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card card-featured">
+        <div class="card-body">
+          <div class="card-top">
+            <span class="tag">Quant research · Python</span>
+            <span class="mono muted">2026 – present</span>
+          </div>
+          <h3>Options dealer positioning and 0DTE strategy research</h3>
+          <p class="role">Independent research</p>
+          <p>
+            I wanted to know whether the engineering habit of distrusting any result you can't reproduce would
+            survive contact with markets. I built a Python tool that computes dealer gamma (GEX), vanna, and charm
+            exposure, zero-gamma flip levels, and call/put walls from option open interest using Black-Scholes
+            Greeks, with strike-by-time heatmap dashboards and alerts running on a cloud VM. Then I backtested
+            GEX-gated 0DTE SPY breakout strategies over 268 trading days on real NBBO option quotes against
+            matched-null controls.
+          </p>
+        </div>
+        <div class="card-body">
+          <p>
+            The most useful thing I found was my own mistakes. Twice a strategy looked profitable until an audit
+            turned up lookahead bias: a confirmation signal that peeked four minutes ahead, and an exit-fill
+            convention that priced stops before they were knowable. Fixed, a 63% win rate became 36% and +1.7% per
+            trade became −5.5%, and live paper-trading fills agreed with the corrected numbers. After that I built a
+            four-stage validator (deflated Sharpe, cross-instrument replication, embargoed walk-forward, sealed
+            holdout). It has rejected all 202 hypotheses I've tested, including a SPY mean-reversion study against a
+            rolling-OLS cross-market fair value. I count the clean negative results as the output.
+          </p>
+          <ul class="stats">
+            <li><b>202</b><span>hypotheses tested, 0 survivors</span></li>
+            <li><b>2</b><span>lookahead bugs caught in self-audit</span></li>
+            <li><b>268</b><span>trading days backtested</span></li>
+          </ul>
+        </div>
+      </article>
+
+
+      <article class="card card-featured">
+        <div class="card-body">
+          <div class="card-top">
+            <span class="tag">Drones · Startup</span>
+            <span class="mono muted">2025 – 2026</span>
+          </div>
+          <h3>AirCart</h3>
+          <p class="role">Co-founder, hardware lead</p>
+          <p>
+            AirCart is a startup I co-founded with three classmates to prototype autonomous drone delivery for food
+            and goods. I led the hardware. I designed the heavy-lift airframe and payload bay, integrated the
+            flight electronics and power system, and tuned the PID control loops that govern flight. We took the
+            vehicle from first schematic to a flying prototype in two months, then validated it over more than 20
+            test flights, revising the structure and control gains between rounds until it carried a 5 kg payload
+            reliably. I also ran early prototyping and manufacturing and researched how existing couriers operate
+            to shape the delivery use case.
+          </p>
+          <ul class="stats">
+            <li><b>5 kg</b><span>payload</span></li>
+            <li><b>20+</b><span>test flights</span></li>
+            <li><b>2 mo</b><span>schematic to flight</span></li>
+          </ul>
+        </div>
+        <figure>
+          <img class="card-img" src="https://tigerc12.github.io/img/aircart-drone.png" alt="CAD model of the AirCart quadcopter with a boxed payload bay slung under the center of the frame" loading="lazy">
+          <figcaption>Quadcopter CAD with the under-slung payload bay.</figcaption>
+        </figure>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Quant · Pine Script</span>
+          <span class="mono muted">2026</span>
+        </div>
+        <h3>Intraday volume-anomaly signal</h3>
+        <p>
+          A 1-minute SPY/QQQ indicator that flags six Wyckoff volume patterns by scoring each bar's volume, range,
+          and wicks against trailing baselines (ratio or z-score). It is leak-free by construction: every reference
+          statistic is lagged one bar, signals confirm only at bar close, and the documented fill rule is the next
+          bar's open. Along the way I found and fixed a session-gap artifact where pre-market volume made the signal
+          fire almost every morning at the open.
+        </p>
+        <ul class="stats">
+          <li><b>6</b><span>patterns</span></li>
+          <li><b>0</b><span>lookahead</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Robotics · Mechanical</span>
+          <span class="mono muted">Summer 2026</span>
+        </div>
+        <h3>Teleoperated robotic hand</h3>
+        <p class="role">Glove lead</p>
+        <p>
+          A group project to build a robotic hand driven by an operator wearing a
+          <a href="https://tea-lab.github.io/DOGlove/index.html" target="_blank" rel="noopener">DOGlove</a>, the
+          open-source haptic force-feedback glove from the TEA Lab. I was responsible for the glove. The work was
+          mostly mechanical: printing and fitting the 21-DoF joint linkage, assembling the cable-driven
+          force-feedback transmission, and tuning the fit so the glove tracked cleanly through a full range of finger
+          motion. On the electrical side I populated the board, flashed the firmware, and verified the glove was
+          reporting finger positions to the hand. The rest of the team built the hand.
+        </p>
+        <ul class="stats">
+          <li><b>21</b><span>DoF hand tracking</span></li>
+          <li><b>5</b><span>fingers with force feedback</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Mechanical</span>
+          <span class="mono muted">2025</span>
+        </div>
+        <h3>3D filament recycler</h3>
+        <figure>
+          <img class="card-img fit" src="https://tigerc12.github.io/img/filament-recycler.png" alt="CAD assembly of the filament recycler: aluminum extrusion frame, blue hopper feeding a shredder, extruder, and spooling drum" loading="lazy">
+          <figcaption>Full assembly: hopper, shredder, extruder, and spooler on an aluminum extrusion frame.</figcaption>
+        </figure>
+        <p>
+          A closed-loop machine that shreds failed PLA prints and extrudes them back into 1.75 mm filament. Over eight
+          months a small team and I designed the shredder, extruder, and spooling stages, then iterated the nozzle
+          geometry, spooling arm, and feed mechanism through five design revisions to hold diameter within ±0.05 mm,
+          tight enough to print with. The finished machine went to our school's robotics team, which had been paying
+          for filament out of a small budget.
+        </p>
+        <ul class="stats">
+          <li><b>±0.05 mm</b><span>diameter</span></li>
+          <li><b>5</b><span>revisions</span></li>
+          <li><b>8 mo</b><span>build</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">PCB · Embedded</span>
+          <span class="mono muted">2025</span>
+        </div>
+        <h3>Badminton racket accelerometer</h3>
+        <div class="card-media">
+          <figure>
+            <img class="card-img" src="https://tigerc12.github.io/img/racket-pcb-schematic.png" alt="KiCad schematic: ESP32-WROOM-32E, MPU-6050 IMU, CH340C USB-serial bridge, USB-C receptacle, TP4056 LiPo charger, and AMS1117 3.3 V regulator" loading="lazy">
+            <figcaption>Schematic. ESP32-WROOM-32E, MPU-6050 over I²C, CH340C USB-serial, TP4056 charger, 3.3 V LDO.</figcaption>
+          </figure>
+          <figure>
+            <img class="card-img" src="https://tigerc12.github.io/img/racket-pcb-layout.png" alt="KiCad PCB layout with antenna keep-out zone, ESP32 module, USB-C connector, and a LiPo battery footprint with four mounting holes" loading="lazy">
+            <figcaption>Layout. Antenna keep-out, USB-C at the board edge, battery footprint, four mounting holes.</figcaption>
+          </figure>
+        </div>
+        <p>
+          A custom data-acquisition board that mounts to a badminton racket and records 3-axis swing acceleration and
+          impact force at 1000 Hz. I designed it independently in KiCad: an ESP32-WROOM-32E reading an MPU-6050 IMU
+          over I²C, USB-C with a CH340C bridge for programming and data offload, ESD protection on the data lines, and
+          a TP4056 LiPo charger feeding a 3.3 V regulator so it runs untethered. The layout keeps the antenna clear
+          with a keep-out zone and puts the battery footprint under the board to stay compact on the handle. I taught
+          myself the circuit design and layout for this from component datasheets, designed a printed case to mount it
+          to the racket, and used the data to analyze my own strokes.
+        </p>
+        <ul class="stats">
+          <li><b>1000 Hz</b><span>sample rate</span></li>
+          <li><b>3-axis</b><span>accel + impact</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Robotics</span>
+          <span class="mono muted">2024 – 2026</span>
+        </div>
+        <h3>FIRST Robotics competition robot</h3>
+        <p class="role">Board member, electrical and mechanical team</p>
+        <p>
+          I worked on both sides of a 100+ lb competition robot with a 20-person team. Mechanically, I designed and
+          assembled drivetrain, actuator, and structural subsystems. Electrically, I architected the power
+          distribution for the motor controllers and sensor array and wired the robot. After wiring faults cost us
+          matches one season, I introduced structured cable management and a pre-match diagnostic routine that
+          eliminated them.
+        </p>
+        <ul class="stats">
+          <li><b>100+ lb</b><span>robot</span></li>
+          <li><b>20</b><span>person team</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Power</span>
+          <span class="mono muted">2024</span>
+        </div>
+        <h3>Solar-powered battery bank</h3>
+        <p>
+          A portable battery bank charged from photovoltaic panels. I sized the cells, selected the charge controller
+          and battery management system, and benchmarked different panel and battery configurations against each
+          other to understand where the efficiency trade-offs actually fall. It's the project that got me interested
+          in power electronics.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <h2>Experience</h2>
+    </div>
+
+    <ol class="timeline">
+      <li>
+        <div class="tl-when mono">2025 – 2026</div>
+        <div class="tl-body">
+          <h3>Co-founder, drone engineering lead</h3>
+          <p class="role">AirCart · Brea, CA</p>
+          <ul>
+            <li>Engineered a heavy-lift UAV with a 5 kg payload capacity and validated it over 20+ test flights, with structural and control revisions between rounds.</li>
+            <li>Led hardware development across structural integration, PID tuning, and flight testing, taking a four-person team from concept to flight in two months.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when mono">2024 – 2026</div>
+        <div class="tl-body">
+          <h3>Board member, electrical and mechanical team</h3>
+          <p class="role">FIRST Robotics · Fullerton, CA</p>
+          <ul>
+            <li>Designed and assembled drivetrain, actuator, and structural subsystems on a 100+ lb competition robot with a 20-person team.</li>
+            <li>Architected power distribution for the motor controllers and sensor array; eliminated wiring faults with structured cable management and pre-match diagnostics.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when mono">Jun – Jul 2025</div>
+        <div class="tl-body">
+          <h3>Engineering intern</h3>
+          <p class="role">Atlas Assembly / Glenair · Arcadia, CA</p>
+          <ul>
+            <li>Designed precision assembly tooling in SOLIDWORKS and 3D-printed prototypes that improved assembly efficiency and technician access, including a layout study of tool clearances for my mentor.</li>
+            <li>Fabricated wire connector and fiber optic cable assemblies by crimping and termination to aerospace production standards.</li>
+            <li>Presented the finished tooling to Glenair engineers at the end of the internship.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-group">
+        <h3>Quantitative research</h3>
+        <ul class="chips">
+          <li>Python (pandas, NumPy)</li><li>backtesting</li><li>lookahead-bias control</li><li>walk-forward validation</li><li>deflated Sharpe</li><li>options Greeks</li><li>Black-Scholes</li><li>time-series analysis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>CAD and design</h3>
+        <ul class="chips">
+          <li>SOLIDWORKS (CSWA certified)</li><li>Fusion 360</li><li>Onshape</li><li>parametric modeling</li><li>tolerance analysis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Fabrication</h3>
+        <ul class="chips">
+          <li>3D printing</li><li>prototype testing</li><li>precision assembly</li><li>crimping</li><li>fiber optic cable assembly</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Electrical and PCB</h3>
+        <ul class="chips">
+          <li>KiCad</li><li>schematic design</li><li>PCB layout</li><li>power distribution</li><li>ESP32</li><li>IMU and sensors</li><li>motor controllers</li><li>soldering</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Embedded and software</h3>
+        <ul class="chips">
+          <li>firmware integration</li><li>PID tuning</li><li>sensor fusion</li><li>data acquisition</li><li>Python</li><li>C++</li><li>Java</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about">
+      <div class="about-text">
+        <p>
+          I'm from Walnut, California, and went to Troy High School in the Tech Magnet program. I'm a first-generation
+          college student. At Stanford I'm studying mechanical engineering. I came to markets through
+          engineering: tuning flight controllers and chasing wiring faults taught me to distrust results I can't
+          reproduce, and quantitative trading research turned out to reward exactly that habit.
+        </p>
+        <p>
+          I've played badminton competitively since I was seven. I've represented the U.S. in BWF tournaments as a
+          Yonex-sponsored junior, trained at Global Badminton Academy under Tony Gunawan (Olympic gold, 2000), and won
+          U19 men's doubles at the 2025 Pan Am Junior Championships in Guatemala. The racket accelerometer project came
+          out of wanting to see my own swing data.
+        </p>
+        <p>
+          In high school I also ran the Engineering to the Future club, where I gave biweekly talks introducing
+          members to different engineering fields, helped organize the Crack the Code hackathon (2000+ students across
+          Southern California over three years), and took the Stanford Pre-Collegiate neuroengineering course, where
+          my group presented on brain-computer interfaces. Outside of that I've put in 700+ volunteer hours with Care
+          Mission USA, mostly food drives and meal prep, and coached free badminton clinics through Badminton Beyond
+          Borders.
+        </p>
+      </div>
+      <dl class="facts">
+        <div><dt>Education</dt><dd>Stanford University, B.S. Mechanical Engineering, expected 2030</dd></div>
+        <div><dt>Certification</dt><dd>Certified SOLIDWORKS Associate (CSWA), May 2026</dd></div>
+        <div><dt>Badminton</dt><dd>Team USA · 2025 Pan Am Junior Champion, U19 doubles · Yonex-sponsored</dd></div>
+        <div><dt>Academic</dt><dd>National Merit Commended Scholar · AP Scholar with Distinction · Troy Tech GPA 4.84</dd></div>
+        <div><dt>Other</dt><dd>3× Gold Presidential Volunteer Service Award · College Board First-Generation Recognition</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section contact">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p class="section-sub">Email is the best way to reach me.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:tigerc@stanford.edu">tigerc@stanford.edu</a>
+      <a class="btn" href="https://github.com/TigerC12" target="_blank" rel="noopener">github.com/TigerC12</a>
+      <a class="btn" href="https://www.linkedin.com/in/youshitigerchen" target="_blank" rel="noopener">linkedin.com/in/youshitigerchen</a>
+      <a class="btn" href="https://tigerc12.github.io/resume/Resume_Youshi_Tiger_Chen_Mechanical_Engineering.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+    <p class="muted small contact-note">
+      Available for summer 2027 internships. U.S. citizen, no sponsorship needed. Based in the LA area when not at Stanford.
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer mono muted">
+  <span>Youshi (Tiger) Chen, 2026</span>
+</footer>
+
+</body>
+</html>
