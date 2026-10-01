@@ -190,6 +190,11 @@ figure { margin: 0; }
   .card-featured { grid-template-columns: 1fr; }
 }
 
+
+/* mechanical page additions */
+.card-featured .card-img.fit { aspect-ratio: 4 / 3; object-fit: contain; }
+.section-head.subhead { margin-top: 48px; }
+.section-head.subhead h2 { font-size: 1.25rem; }
 </style>
 </head>
 <body>
@@ -239,42 +244,6 @@ figure { margin: 0; }
       <article class="card card-featured">
         <div class="card-body">
           <div class="card-top">
-            <span class="tag">Quant research · Python</span>
-            <span class="mono muted">2026 – present</span>
-          </div>
-          <h3>Options dealer positioning and 0DTE strategy research</h3>
-          <p class="role">Independent research</p>
-          <p>
-            I wanted to know whether the engineering habit of distrusting any result you can't reproduce would
-            survive contact with markets. I built a Python tool that computes dealer gamma (GEX), vanna, and charm
-            exposure, zero-gamma flip levels, and call/put walls from option open interest using Black-Scholes
-            Greeks, with strike-by-time heatmap dashboards and alerts running on a cloud VM. Then I backtested
-            GEX-gated 0DTE SPY breakout strategies over 268 trading days on real NBBO option quotes against
-            matched-null controls.
-          </p>
-        </div>
-        <div class="card-body">
-          <p>
-            The most useful thing I found was my own mistakes. Twice a strategy looked profitable until an audit
-            turned up lookahead bias: a confirmation signal that peeked four minutes ahead, and an exit-fill
-            convention that priced stops before they were knowable. Fixed, a 63% win rate became 36% and +1.7% per
-            trade became −5.5%, and live paper-trading fills agreed with the corrected numbers. After that I built a
-            four-stage validator (deflated Sharpe, cross-instrument replication, embargoed walk-forward, sealed
-            holdout). It has rejected all 202 hypotheses I've tested, including a SPY mean-reversion study against a
-            rolling-OLS cross-market fair value. I count the clean negative results as the output.
-          </p>
-          <ul class="stats">
-            <li><b>202</b><span>hypotheses tested, 0 survivors</span></li>
-            <li><b>2</b><span>lookahead bugs caught in self-audit</span></li>
-            <li><b>268</b><span>trading days backtested</span></li>
-          </ul>
-        </div>
-      </article>
-
-
-      <article class="card card-featured">
-        <div class="card-body">
-          <div class="card-top">
             <span class="tag">Drones · Startup</span>
             <span class="mono muted">2025 – 2026</span>
           </div>
@@ -301,23 +270,30 @@ figure { margin: 0; }
         </figure>
       </article>
 
-      <article class="card">
+      <article class="card card-featured">
+        <div class="card-body">
         <div class="card-top">
-          <span class="tag">Quant · Pine Script</span>
-          <span class="mono muted">2026</span>
+          <span class="tag">Mechanical</span>
+          <span class="mono muted">2025</span>
         </div>
-        <h3>Intraday volume-anomaly signal</h3>
+        <h3>3D filament recycler</h3>
         <p>
-          A 1-minute SPY/QQQ indicator that flags six Wyckoff volume patterns by scoring each bar's volume, range,
-          and wicks against trailing baselines (ratio or z-score). It is leak-free by construction: every reference
-          statistic is lagged one bar, signals confirm only at bar close, and the documented fill rule is the next
-          bar's open. Along the way I found and fixed a session-gap artifact where pre-market volume made the signal
-          fire almost every morning at the open.
+          A closed-loop machine that shreds failed PLA prints and extrudes them back into 1.75 mm filament. Over eight
+          months a small team and I designed the shredder, extruder, and spooling stages, then iterated the nozzle
+          geometry, spooling arm, and feed mechanism through five design revisions to hold diameter within ±0.05 mm,
+          tight enough to print with. The finished machine went to our school's robotics team, which had been paying
+          for filament out of a small budget.
         </p>
         <ul class="stats">
-          <li><b>6</b><span>patterns</span></li>
-          <li><b>0</b><span>lookahead</span></li>
+          <li><b>±0.05 mm</b><span>diameter</span></li>
+          <li><b>5</b><span>revisions</span></li>
+          <li><b>8 mo</b><span>build</span></li>
         </ul>
+        </div>
+        <figure>
+          <img class="card-img fit" src="https://tigerc12.github.io/img/filament-recycler.png" alt="CAD assembly of the filament recycler: aluminum extrusion frame, blue hopper feeding a shredder, extruder, and spooling drum" loading="lazy">
+          <figcaption>Full assembly: hopper, shredder, extruder, and spooler on an aluminum extrusion frame.</figcaption>
+        </figure>
       </article>
 
       <article class="card">
@@ -339,30 +315,6 @@ figure { margin: 0; }
         <ul class="stats">
           <li><b>21</b><span>DoF hand tracking</span></li>
           <li><b>5</b><span>fingers with force feedback</span></li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="card-top">
-          <span class="tag">Mechanical</span>
-          <span class="mono muted">2025</span>
-        </div>
-        <h3>3D filament recycler</h3>
-        <figure>
-          <img class="card-img fit" src="https://tigerc12.github.io/img/filament-recycler.png" alt="CAD assembly of the filament recycler: aluminum extrusion frame, blue hopper feeding a shredder, extruder, and spooling drum" loading="lazy">
-          <figcaption>Full assembly: hopper, shredder, extruder, and spooler on an aluminum extrusion frame.</figcaption>
-        </figure>
-        <p>
-          A closed-loop machine that shreds failed PLA prints and extrudes them back into 1.75 mm filament. Over eight
-          months a small team and I designed the shredder, extruder, and spooling stages, then iterated the nozzle
-          geometry, spooling arm, and feed mechanism through five design revisions to hold diameter within ±0.05 mm,
-          tight enough to print with. The finished machine went to our school's robotics team, which had been paying
-          for filament out of a small budget.
-        </p>
-        <ul class="stats">
-          <li><b>±0.05 mm</b><span>diameter</span></li>
-          <li><b>5</b><span>revisions</span></li>
-          <li><b>8 mo</b><span>build</span></li>
         </ul>
       </article>
 
@@ -432,6 +384,69 @@ figure { margin: 0; }
       </article>
 
     </div>
+
+    <div class="section-head subhead">
+      <h2>Side work: quantitative research</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-body">
+          <div class="card-top">
+            <span class="tag">Quant research · Python</span>
+            <span class="mono muted">2026 – present</span>
+          </div>
+          <h3>Options dealer positioning and 0DTE strategy research</h3>
+          <p class="role">Independent research</p>
+          <p>
+            I wanted to know whether the engineering habit of distrusting any result you can't reproduce would
+            survive contact with markets. I built a Python tool that computes dealer gamma (GEX), vanna, and charm
+            exposure, zero-gamma flip levels, and call/put walls from option open interest using Black-Scholes
+            Greeks, with strike-by-time heatmap dashboards and alerts running on a cloud VM. Then I backtested
+            GEX-gated 0DTE SPY breakout strategies over 268 trading days on real NBBO option quotes against
+            matched-null controls.
+          </p>
+        </div>
+        <div class="card-body">
+          <p>
+            The most useful thing I found was my own mistakes. Twice a strategy looked profitable until an audit
+            turned up lookahead bias: a confirmation signal that peeked four minutes ahead, and an exit-fill
+            convention that priced stops before they were knowable. Fixed, a 63% win rate became 36% and +1.7% per
+            trade became −5.5%, and live paper-trading fills agreed with the corrected numbers. After that I built a
+            four-stage validator (deflated Sharpe, cross-instrument replication, embargoed walk-forward, sealed
+            holdout). It has rejected all 202 hypotheses I've tested, including a SPY mean-reversion study against a
+            rolling-OLS cross-market fair value. I count the clean negative results as the output.
+          </p>
+          <ul class="stats">
+            <li><b>202</b><span>hypotheses tested, 0 survivors</span></li>
+            <li><b>2</b><span>lookahead bugs caught in self-audit</span></li>
+            <li><b>268</b><span>trading days backtested</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="tag">Quant · Pine Script</span>
+          <span class="mono muted">2026</span>
+        </div>
+        <h3>Intraday volume-anomaly signal</h3>
+        <p>
+          A 1-minute SPY/QQQ indicator that flags six Wyckoff volume patterns by scoring each bar's volume, range,
+          and wicks against trailing baselines (ratio or z-score). It is leak-free by construction: every reference
+          statistic is lagged one bar, signals confirm only at bar close, and the documented fill rule is the next
+          bar's open. Along the way I found and fixed a session-gap artifact where pre-market volume made the signal
+          fire almost every morning at the open.
+        </p>
+        <ul class="stats">
+          <li><b>6</b><span>patterns</span></li>
+          <li><b>0</b><span>lookahead</span></li>
+        </ul>
+      </article>
+
+    </div>
+
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
@@ -485,12 +500,6 @@ figure { margin: 0; }
     </div>
     <div class="skills">
       <div class="skill-group">
-        <h3>Quantitative research</h3>
-        <ul class="chips">
-          <li>Python (pandas, NumPy)</li><li>backtesting</li><li>lookahead-bias control</li><li>walk-forward validation</li><li>deflated Sharpe</li><li>options Greeks</li><li>Black-Scholes</li><li>time-series analysis</li>
-        </ul>
-      </div>
-      <div class="skill-group">
         <h3>CAD and design</h3>
         <ul class="chips">
           <li>SOLIDWORKS (CSWA certified)</li><li>Fusion 360</li><li>Onshape</li><li>parametric modeling</li><li>tolerance analysis</li>
@@ -512,6 +521,12 @@ figure { margin: 0; }
         <h3>Embedded and software</h3>
         <ul class="chips">
           <li>firmware integration</li><li>PID tuning</li><li>sensor fusion</li><li>data acquisition</li><li>Python</li><li>C++</li><li>Java</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Quantitative research</h3>
+        <ul class="chips">
+          <li>Python (pandas, NumPy)</li><li>backtesting</li><li>lookahead-bias control</li><li>walk-forward validation</li><li>deflated Sharpe</li><li>options Greeks</li><li>Black-Scholes</li><li>time-series analysis</li>
         </ul>
       </div>
     </div>
